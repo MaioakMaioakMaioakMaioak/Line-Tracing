@@ -16,7 +16,7 @@ void TrackPID(int MotorSpeed)
 {
   int Output, LeftOutput, RightOutput, MaxSpeed=MotorSpeed;
   TuneMotor(MotorSpeed); 
-  Integral += Error; // Integral = Integral + Error; 
+  Integral += Error;    // Integral = Integral + Error; 
   Derivative = Error - PreError;
   Output = (Kp * Error) + (Ki * Integral) + (Kd * Derivative);
   
@@ -24,8 +24,7 @@ void TrackPID(int MotorSpeed)
   RightOutput = RightSpeed - Output;
   constrain(LeftOutput,-MaxSpeed,MaxSpeed);
   constrain(RightOutput,-MaxSpeed,MaxSpeed);
-  
-    
+      
   motor(1,RightOutput);
   motor(3,RightOutput);
 
