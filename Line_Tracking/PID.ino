@@ -14,20 +14,28 @@ void CalError()
 
 void TrackPID(int MotorSpeed)
 {
-  int Output, LeftOutput, RightOutput, MaxSpeed=MotorSpeed;
+  int Output,LeftOutput, RightOutput, MaxSpeed = MotorSpeed;
+  CalError();
   TuneMotor(MotorSpeed); 
   Integral += Error;    // Integral = Integral + Error; 
   Derivative = Error - PreError;
   Output = (Kp * Error) + (Ki * Integral) + (Kd * Derivative);
   
-  LeftOutput  = LeftSpeed  + Output;
-  RightOutput = RightSpeed - Output;
+  if (Error == -2) {
+    LeftOutput  = (LeftSpeed  + Output)+50;
+    RightOutput = (RightSpeed - Output)-20;
+  } 
+  else {
+    LeftOutput  = (LeftSpeed  + Output)+30;
+    RightOutput = (RightSpeed - Output)+10;
+  }
+
   constrain(LeftOutput,-MaxSpeed,MaxSpeed);
   constrain(RightOutput,-MaxSpeed,MaxSpeed);
       
   motor(1,RightOutput);
   motor(3,RightOutput);
-
+    
   motor(2,LeftOutput);
   motor(4,LeftOutput);
   // motor(2,-LeftOutput);
