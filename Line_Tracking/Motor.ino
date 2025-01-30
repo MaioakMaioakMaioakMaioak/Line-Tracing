@@ -3,11 +3,11 @@ void MotorStop()
   AO();
   delay(100);
 }
-
+  
 void TuneMotor(int MotorSpeed) //ปรับจูนมอเตอร์
 {
-    LeftSpeed=MotorSpeed-30; //เอียงขวา
-    RightSpeed=MotorSpeed+5; //เอียงซ้าย
+    LeftSpeed=MotorSpeed-0; //เอียงขวา
+    RightSpeed=MotorSpeed+0; //เอียงซ้าย
     // LeftSpeed = MotorSpeed + 15;   // เพิ่มกำลังล้อซ้าย
     // RightSpeed = MotorSpeed - 30;  // ลดกำลังล้อขวา
 }
