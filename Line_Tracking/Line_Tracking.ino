@@ -1,6 +1,4 @@
 #include <POP32.h>
-#include <U8g2lib.h>  // ใช้ U8g2
-#include <Wire.h>     // จำเป็นสำหรับการสื่อสาร I2C
 
 int L3, L2, L1, C, R1, R2, R3; 
 int RefL3 = 2474,
